@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 
+import config
 import os
 import random
 
 BEGIN = 0
 END = 1
-
-POEM_DIR = "poems"
 
 class markov:
     def __init__(self):
@@ -97,11 +96,11 @@ def parse_poems():
     """ Parse all poems in POEM_DIR.
     Returns a dictionary from author to markov chain """
     chains = {}
-    for name in os.listdir(POEM_DIR):
+    for name in os.listdir(config.POEM_DIR):
         print("training " + name)
         examples = []
-        for poem_file in os.listdir(POEM_DIR + "/" + name):
-            parse_poem(POEM_DIR + "/" + name + "/" + poem_file, examples)
+        for poem_file in os.listdir(config.POEM_DIR + "/" + name):
+            parse_poem(config.POEM_DIR + "/" + name + "/" + poem_file, examples)
         m = markov()
         for example in examples:
             m.add(example, preserve_newlines=True)
