@@ -7,9 +7,6 @@ app = flask.Flask(__name__)
 
 models = poem_gen.parse_poems()
 
-def nl_to_br(string):
-    return "<br />".join(string.split("\n"))
-
 @app.route('/', methods=['GET'])
 def index():
     poet = flask.request.args.get('poet', None)
@@ -23,4 +20,4 @@ def index():
                                  poet=poet,
                                  poem=poem)
 
-app.run(host='0.0.0.0', port=80)
+app.run(host=config.HOST, port=config.PORT)
