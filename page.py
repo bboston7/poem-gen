@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
+import config
 import flask
 import poem_gen
 
 app = flask.Flask(__name__)
 
 models = poem_gen.parse_poems()
+poets = sorted(models.keys())
 
 @app.route('/', methods=['GET'])
 def index():
@@ -16,7 +18,7 @@ def index():
     else:
         poem = None
     return flask.render_template('index.html',
-                                 authors=models.keys(),
+                                 authors=poets,
                                  poet=poet,
                                  poem=poem)
 
