@@ -3,10 +3,12 @@
     <title>Generate Poems</title>
     <style>
         p {white-space: pre-wrap;}
+        form {display: inline;}
     </style>
 </head>
 <body>
     <h1>Generate Poems</h1>
+    Poet:
     <form action="/">
         <select name="poet">
             {% for author in authors %}
@@ -17,7 +19,7 @@
                 {% endif %}
             {% endfor %}
         </select>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Generate">
     </form>
     {% if poem %}
         <p>{{ poem }}</p>
