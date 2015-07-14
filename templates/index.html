@@ -1,0 +1,25 @@
+<!doctype html>
+<head>
+    <title>Generate Poems</title>
+    <style>
+        p {white-space: pre-wrap;}
+    </style>
+</head>
+<body>
+    <h1>Generate Poems</h1>
+    <form action="/">
+        <select name="poet">
+            {% for author in authors %}
+                {% if author == poet %}
+                    <option value="{{ author }}" selected>{{ author }}</option>
+                {% else %}
+                    <option value="{{ author }}">{{ author }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% if poem %}
+        <p>{{ poem }}</p>
+    {% endif %}
+</body>
