@@ -1,0 +1,3 @@
+HOST="127.0.0.1"
+POEM_DIR="poems"
+PORT=5000
