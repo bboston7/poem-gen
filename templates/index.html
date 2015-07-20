@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Generate Poems</h1>
+    <p> Pick a poet from the list below and a poem will be generated in their style.  </p>
     Poet:
     <form action="/">
         <select name="poet">
@@ -24,4 +25,7 @@
     {% if poem %}
         <p>{{ poem }}</p>
     {% endif %}
+
+    <h2>How does this work?</h2>
+    <p> This page generates poems using <a href="https://en.wikipedia.org/wiki/Markov_chain">Markov chains.</a> Each poet has a Markov chain built from a set of their works where each node in the chain is a word.  Each Markov chain also contains a BEGIN and END state signifying the start and end of a stanza.  For the real gory details, check out the <a href="https://github.com/bboston7/poem-gen">github page</a> for poem-gen.  </p>
 </body>
