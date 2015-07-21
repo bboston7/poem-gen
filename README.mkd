@@ -1,0 +1,56 @@
+# poem-gen #
+poem-gen is a simple project for generating poems using Markov chains.
+
+## Requirements ##
+The following programs/libraries are required to run poem-gen:
+* Python 3
+* Flask (optional, required for web interface)
+
+## Usage ##
+To run poem-gen from the command line, simply run `./poem-gen.py`.
+Enter an author and the program will print a poem.
+
+To run the web interface, first edit `config.py` and set the proper the host
+and port you would like to run the page on.
+Then, run `./page.py`.
+
+## Poem Files ##
+poem-gen expects poetry to be placed in the `poems` folder under a subfolder
+indicating the author.
+All poems under one author folder are combined for the sake of training.
+Additionally, each file is expected to contain a header.
+The header is ignored by the processor, it is a great place to put metadata
+about the poem files.
+The header is considered everything before a blank line (a line containing
+nothing but a newline character).
+Lastly, poem-gen generates one stanza of a poem where a stanza is defined as a
+block of text with blank lines above and below it.
+Therefore, stanzas in the poem files should be broken by blank lines.
+
+## Contributing Poem Files ##
+If you wish to contribute poem files to poem-gen, you must follow all of the
+above rules plus the following:
+* Poems must be in the public domain in the United States
+* All extra information (licence details, forwards, chapter/poem names) must be
+  stripped from the poem files.
+* There must be exactly one blank line between stanzas, and two or more blank
+  lines between poems.
+  This currently has no effect, but would be useful if we need to make the
+  distinction between the two in the future.
+* The header of each file must contain the author's name on the first line and
+  the name of the collection on the second line.
+
+## Automated Poem File Cleaning ##
+Because some poem files are large, a tool was developed to perform some
+automated cleaning.
+Many poem files online have some number of spaces before each poem while the
+non-poem portions have no spaces before them.
+If this applies to a poem file you are creating, you may wish to use
+`tools/auto-clean.py`.
+This script takes a poem file and the number of spaces before each poem as
+arguments and attempts to clean the file.
+The cleaned file is output through standard out.
+This can greatly alleviate most of the pain of creating poem files, but it is
+often incomplete.
+You will likely still need to remove parts of the outputted file before it is
+completely correct.
