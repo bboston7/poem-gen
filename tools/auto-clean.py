@@ -10,6 +10,16 @@ if __name__ == "__main__":
     newlines = 0
     with open(fname) as f:
         for line in f:
+            # Remove line numbers
+            tokens = line.split()
+            try:
+                if tokens:
+                    chop = len(str(int(tokens[-1]))) + 1
+                    line = line[:-chop].rstrip()
+                    line += "\n"
+            except ValueError:
+                pass
+
             if line.startswith(spaces):
                 print(line[num_spaces:], end="")
                 newlines = 0
