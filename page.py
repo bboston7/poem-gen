@@ -22,4 +22,5 @@ def index():
                                  poet=poet,
                                  poem=poem)
 
-app.run(host=config.HOST, port=config.PORT)
+if __name__ == "__main__":
+    app.run(host=config.HOST, port=config.PORT)
