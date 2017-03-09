@@ -92,12 +92,13 @@ def parse_poem(fname, examples):
     assert len(examples) > 1
     return examples
 
-def parse_poems():
+def parse_poems(verbose):
     """ Parse all poems in POEM_DIR.
     Returns a dictionary from author to markov chain """
     chains = {}
     for name in os.listdir(config.POEM_DIR):
-        print("training " + name)
+        if verbose:
+            print("training " + name)
         examples = []
         for poem_file in os.listdir(config.POEM_DIR + "/" + name):
             parse_poem(config.POEM_DIR + "/" + name + "/" + poem_file, examples)
@@ -121,7 +122,7 @@ def generate_poem(chain):
 
 
 if __name__ == "__main__":
-    chains = parse_poems()
+    chains = parse_poems(True)
     print("done!")
     while True:
         author = input("author? ")
